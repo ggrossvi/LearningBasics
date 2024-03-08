@@ -3,20 +3,20 @@
 //  LearningBasics
 //
 //  Created by Gloria Villa on 2/29/24.
-// Questions can I rename root package without everything going wonky
-// what does \.self do
+
 
 import SwiftUI
 
 struct ContentView: View {
-    private var people: [String] = ["Percy", "Coco", "Lizzy", "Pia"].reversed()
+    private var dogs: [String] = ["Percy", "Coco", "Lizzy", "Pia"].reversed()
     
     
     var body: some View {
         VStack {
             ZStack {
-                ForEach(people, id: \.self) { person in
-                    CardView(person: person)
+                // array and for each element do something. Takes one person and draws the card view. dogs is the array then a block - param dog / Element card view for each element - *** id: how differentiate one from another
+                ForEach(dogs, id: \.self) { dog in
+                    CardView(dog: dog)
                     
                 }
             }

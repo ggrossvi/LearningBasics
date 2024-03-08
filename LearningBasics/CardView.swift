@@ -3,12 +3,13 @@
 //  LearningBasics
 //
 //  Created by Gloria Villa on 2/29/24.
-//
+//  How do I put a picture in
 
 import SwiftUI
 
 struct CardView: View {
-    var person: String
+    //struct initializer(constructor) with property name created for cardview
+    var dog: String
     @State private var offset = CGSize.zero
     @State private var color:  Color = .orange
     
@@ -20,30 +21,40 @@ struct CardView: View {
                 .cornerRadius(4)
                 .foregroundColor(color.opacity(0.9))
                 .shadow(radius: 4)
-            HStack {
-                Text(person)
-                    .font(.largeTitle)
-                    .foregroundColor(.white)
-                    .bold()
-                Image(systemName: "heart.fill")
-                    .foregroundColor(.red)
+            
+            VStack{
+                Image("dog")
+                HStack {
+                    Text(dog)
+                        .font(.largeTitle)
+                        .foregroundColor(.white)
+                        .bold()
+                    Image(systemName: "heart.fill")
+                        .foregroundColor(.red)
+                }
             }
         }
+        //
         .offset(x: offset.width, y: offset.height * 0.4)
+        // makes it more realitic when you swipe - card only slightly rotates
         .rotationEffect(.degrees(Double(offset.width / 40)))
-        /*.gesture(
-            
-       
+        .gesture(
             DragGesture()
-            .onChanged( { gesture in
-                offset = gesture.translation
-            } .onEnded { })
-         */
+                .onChanged { gesture in
+                    // where card was draged
+                    offset = gesture.translation
+                    // what happens when you stop dragging
+                }
+                .onEnded { _ in
+                    
+                }
+        )
+        
     }
 }
 
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
-        CardView(person: "Percy")
+        CardView(dog:  "Percy")
     }
 }
